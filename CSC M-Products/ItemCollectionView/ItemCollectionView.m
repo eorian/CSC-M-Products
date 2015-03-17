@@ -8,8 +8,8 @@
 
 #import "ItemCollectionView.h"
 #import "ItemCollectionViewCell.h"
-
-@interface ItemCollectionView()<UICollectionViewDataSource,UICollectionViewDelegate>
+#import "MainTableViewCell.h"
+@interface ItemCollectionView()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray* collectionArray;
 @end
@@ -25,7 +25,6 @@
     collectionFlowLayout.itemSize = CGSizeMake(90, 150);
     [self.collectionView setCollectionViewLayout:collectionFlowLayout];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ItemCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"ItemCollectionViewCell"];
-    
 }
 #pragma mark    set CollectionView Data
 - (IBAction)seeAllButton:(id)sender {
@@ -57,10 +56,21 @@
     cell.categoryNameLabel.text = [itemDic objectForKey:@"Catelogy"];
     cell.releaseDateLabel.text = [itemDic objectForKey:@"releaseDate"];
     cell.itemindex = indexPath.row;
-    
+    //self.collectionView setContentOffset:CGPointMake(0, 0) animated:NO];
     return cell;
                                 
 }
+#pragma mark UIScrollview delegate
+- (void)setCollectionViewContenOffset:(CGPoint)point;
+{
+    [self.collectionView setContentOffset:point animated:NO];
+}
 
-
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"scrollview scroll");
+    CGPoint point = scrollView.contentOffset;
+   // NSString* key = [NSString stringWithFormat:@"offset%d",];
+    //[self.offsets setObject:[NSValue valueWithCGPoint:point] forKey:key];
+}
 @end

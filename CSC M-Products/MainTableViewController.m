@@ -55,12 +55,16 @@
     cellData = [self.collectionData objectForKey:[self.collectionDataKeys objectAtIndex:indexPath.row]];
     [cell setCollectionData:cellData];
     [cell setHeaderTitle:[self.collectionDataKeys objectAtIndex:indexPath.row]];
+    
     return cell;
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 172;
+    return 195;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 @end

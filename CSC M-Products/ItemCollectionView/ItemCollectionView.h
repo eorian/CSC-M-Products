@@ -14,4 +14,8 @@
 
 - (void)setCollectionData:(NSArray*)collectionArray;
 
+- (void)setCollectionViewContenOffset:(CGPoint)point;
+
+
+
 @end

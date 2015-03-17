@@ -2,29 +2,21 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="ItemCollectionView" customClass="ItemCollectionView">
-            <rect key="frame" x="0.0" y="0.0" width="300" height="172"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="195"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yP3-tT-jUL">
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNj-yo-dPQ">
+                    <rect key="frame" x="217" y="0.0" width="75" height="33"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="22" id="SFu-1O-iqo"/>
+                        <constraint firstAttribute="width" constant="75" id="dBm-v7-OjE"/>
                     </constraints>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHB-EH-gnG">
-                    <rect key="frame" x="8" y="0.0" width="222" height="22"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GNj-yo-dPQ">
-                    <rect key="frame" x="248" y="0.0" width="58" height="27"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="See All 〉 ">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -33,12 +25,17 @@
                         <action selector="seeAllButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="JCg-lW-bhM"/>
                     </connections>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0ko-Dp-ybj">
-                    <rect key="frame" x="0.0" y="22" width="300" height="150"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHB-EH-gnG">
+                    <rect key="frame" x="8" y="5" width="230" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="300" id="E7C-4m-7u4"/>
-                        <constraint firstAttribute="height" constant="150" id="m2D-q9-8Tt"/>
+                        <constraint firstAttribute="height" constant="30" id="Dq5-0l-KJZ"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0ko-Dp-ybj">
+                    <rect key="frame" x="8" y="37" width="284" height="150"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="Hrd-sL-Nny">
                         <size key="itemSize" width="90" height="150"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -53,26 +50,24 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="0ko-Dp-ybj" secondAttribute="bottom" id="3iM-Hw-FwM"/>
-                <constraint firstItem="0ko-Dp-ybj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="753-aa-8g1"/>
-                <constraint firstItem="yP3-tT-jUL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="O1u-64-Vws"/>
-                <constraint firstItem="0ko-Dp-ybj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="22" id="RdV-tE-Iry"/>
-                <constraint firstAttribute="trailing" secondItem="0ko-Dp-ybj" secondAttribute="trailing" id="g93-Sb-apv"/>
-                <constraint firstAttribute="trailing" secondItem="yP3-tT-jUL" secondAttribute="trailing" constant="300" id="gGC-Hp-qea"/>
-                <constraint firstItem="yP3-tT-jUL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="prY-5I-cC5"/>
+                <constraint firstItem="UHB-EH-gnG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="13f-HH-8KK"/>
+                <constraint firstItem="0ko-Dp-ybj" firstAttribute="top" secondItem="GNj-yo-dPQ" secondAttribute="bottom" constant="4" id="8ge-BU-Enf"/>
+                <constraint firstItem="0ko-Dp-ybj" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="IjT-2X-9ig"/>
+                <constraint firstItem="0ko-Dp-ybj" firstAttribute="top" secondItem="UHB-EH-gnG" secondAttribute="bottom" constant="2" id="QFe-qD-LTr"/>
+                <constraint firstItem="GNj-yo-dPQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YLd-nj-Zyg"/>
+                <constraint firstItem="UHB-EH-gnG" firstAttribute="leading" secondItem="0ko-Dp-ybj" secondAttribute="leading" id="a5s-3Q-u8g"/>
+                <constraint firstItem="0ko-Dp-ybj" firstAttribute="trailing" secondItem="GNj-yo-dPQ" secondAttribute="trailing" id="eXG-hp-4CI"/>
+                <constraint firstItem="0ko-Dp-ybj" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="gvu-be-OB1"/>
+                <constraint firstItem="UHB-EH-gnG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="r7V-EF-UIl"/>
+                <constraint firstAttribute="trailing" secondItem="UHB-EH-gnG" secondAttribute="trailing" constant="62" id="xSS-C5-xyr"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="3iM-Hw-FwM"/>
-                </mask>
-            </variation>
             <connections>
                 <outlet property="collectionView" destination="0ko-Dp-ybj" id="NFb-GG-SfP"/>
                 <outlet property="rowHeaderTitle" destination="UHB-EH-gnG" id="r4I-sw-JCi"/>
             </connections>
-            <point key="canvasLocation" x="187" y="133"/>
+            <point key="canvasLocation" x="187" y="144.5"/>
         </view>
     </objects>
 </document>
