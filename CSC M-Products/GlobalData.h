@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface GlobalData : NSObject
 {
     
     NSMutableDictionary *offsets;
 }
 
-@property (nonatomic, strong) NSMutableDictionary* offsets;
-
+@property (nonatomic, retain) NSMutableDictionary* offsets;
+@property (nonatomic,strong) UINavigationController* navigationController;
 + (GlobalData*)sharedManager;
 
 @end

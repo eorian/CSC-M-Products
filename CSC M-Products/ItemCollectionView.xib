@@ -35,7 +35,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="0ko-Dp-ybj">
-                    <rect key="frame" x="8" y="37" width="284" height="150"/>
+                    <rect key="frame" x="0.0" y="37" width="300" height="150"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="Hrd-sL-Nny">
                         <size key="itemSize" width="90" height="150"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -55,9 +55,9 @@
                 <constraint firstItem="0ko-Dp-ybj" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="IjT-2X-9ig"/>
                 <constraint firstItem="0ko-Dp-ybj" firstAttribute="top" secondItem="UHB-EH-gnG" secondAttribute="bottom" constant="2" id="QFe-qD-LTr"/>
                 <constraint firstItem="GNj-yo-dPQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="YLd-nj-Zyg"/>
-                <constraint firstItem="UHB-EH-gnG" firstAttribute="leading" secondItem="0ko-Dp-ybj" secondAttribute="leading" id="a5s-3Q-u8g"/>
-                <constraint firstItem="0ko-Dp-ybj" firstAttribute="trailing" secondItem="GNj-yo-dPQ" secondAttribute="trailing" id="eXG-hp-4CI"/>
-                <constraint firstItem="0ko-Dp-ybj" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="gvu-be-OB1"/>
+                <constraint firstItem="UHB-EH-gnG" firstAttribute="leading" secondItem="0ko-Dp-ybj" secondAttribute="leading" constant="8" id="a5s-3Q-u8g"/>
+                <constraint firstItem="0ko-Dp-ybj" firstAttribute="trailing" secondItem="GNj-yo-dPQ" secondAttribute="trailing" constant="8" id="eXG-hp-4CI"/>
+                <constraint firstItem="0ko-Dp-ybj" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" constant="8" id="gvu-be-OB1"/>
                 <constraint firstItem="UHB-EH-gnG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="r7V-EF-UIl"/>
                 <constraint firstAttribute="trailing" secondItem="UHB-EH-gnG" secondAttribute="trailing" constant="62" id="xSS-C5-xyr"/>
             </constraints>

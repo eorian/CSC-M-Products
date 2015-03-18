@@ -21,8 +21,9 @@
     [super viewDidLoad];
     self.collectionData = [self fakeData];
     self.collectionDataKeys = [NSMutableArray arrayWithArray:[[self fakeData]allKeys]];
+    self.title = @"Featured";
+    [GlobalData sharedManager].navigationController = self.navigationController;
     [self.tableView registerClass:[MainTableViewCell class] forCellReuseIdentifier:@"MainTableViewCell"];
-    
 }
 
 - (void)didReceiveMemoryWarning {

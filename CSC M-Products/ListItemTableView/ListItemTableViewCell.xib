@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListItemTableViewCell" rowHeight="89" id="KGk-i7-Jjw" customClass="ListItemTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yellow Bee is the most cute bee in the world" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gi8-0y-Omr">
+                        <rect key="frame" x="90" y="8" width="178" height="38"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="178" id="6Ri-18-c3N"/>
+                            <constraint firstAttribute="height" constant="38" id="rwV-Ob-E40"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="01/01/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F95-jF-jVi">
+                        <rect key="frame" x="90" y="66" width="178" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="〉" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMv-Sa-ZhZ">
+                        <rect key="frame" x="291" y="19" width="21" height="52"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="21" id="GB9-kd-0Wg"/>
+                            <constraint firstAttribute="height" constant="52" id="hrH-lv-7k2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Android" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQj-ND-VcN">
+                        <rect key="frame" x="90" y="52" width="178" height="11"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="android3.png" translatesAutoresizingMaskIntoConstraints="NO" id="hTJ-f5-VMe">
+                        <rect key="frame" x="8" y="8" width="74" height="74"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="74" id="6YM-Tu-LgV"/>
+                            <constraint firstAttribute="height" constant="74" id="v8e-J6-cYA"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="MMv-Sa-ZhZ" firstAttribute="leading" secondItem="tQj-ND-VcN" secondAttribute="trailing" constant="23" id="0J6-w9-L3G"/>
+                    <constraint firstItem="hTJ-f5-VMe" firstAttribute="centerY" secondItem="MMv-Sa-ZhZ" secondAttribute="centerY" id="56t-zT-lSB"/>
+                    <constraint firstItem="F95-jF-jVi" firstAttribute="top" secondItem="Gi8-0y-Omr" secondAttribute="bottom" constant="20" id="7hl-mM-zGu"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="F95-jF-jVi" secondAttribute="bottom" constant="-2" id="8dV-Xy-xRj"/>
+                    <constraint firstItem="MMv-Sa-ZhZ" firstAttribute="leading" secondItem="F95-jF-jVi" secondAttribute="trailing" constant="23" id="95F-Wa-XOB"/>
+                    <constraint firstItem="tQj-ND-VcN" firstAttribute="top" secondItem="Gi8-0y-Omr" secondAttribute="bottom" constant="6" id="GCB-9r-ycN"/>
+                    <constraint firstAttribute="centerY" secondItem="MMv-Sa-ZhZ" secondAttribute="centerY" id="KJK-YT-qFr"/>
+                    <constraint firstItem="F95-jF-jVi" firstAttribute="leading" secondItem="hTJ-f5-VMe" secondAttribute="trailing" constant="8" symbolic="YES" id="KbW-v2-LC2"/>
+                    <constraint firstItem="MMv-Sa-ZhZ" firstAttribute="leading" secondItem="Gi8-0y-Omr" secondAttribute="trailing" constant="23" id="NNs-KW-Chc"/>
+                    <constraint firstItem="F95-jF-jVi" firstAttribute="top" secondItem="tQj-ND-VcN" secondAttribute="bottom" constant="3" id="bcN-eW-bbA"/>
+                    <constraint firstItem="hTJ-f5-VMe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="dLU-AJ-o3i"/>
+                    <constraint firstItem="hTJ-f5-VMe" firstAttribute="top" secondItem="Gi8-0y-Omr" secondAttribute="top" id="iYV-nH-TP0"/>
+                    <constraint firstItem="Gi8-0y-Omr" firstAttribute="leading" secondItem="hTJ-f5-VMe" secondAttribute="trailing" constant="8" symbolic="YES" id="jVM-M5-piv"/>
+                    <constraint firstItem="hTJ-f5-VMe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="kvv-OT-wYO"/>
+                    <constraint firstItem="MMv-Sa-ZhZ" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="qJ0-Ag-djY"/>
+                    <constraint firstItem="tQj-ND-VcN" firstAttribute="leading" secondItem="hTJ-f5-VMe" secondAttribute="trailing" constant="8" symbolic="YES" id="sIx-dv-wSG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="appNameLabel" destination="Gi8-0y-Omr" id="Q60-56-xPi"/>
+                <outlet property="category" destination="tQj-ND-VcN" id="341-NT-5Kd"/>
+                <outlet property="iconImageView" destination="hTJ-f5-VMe" id="PLJ-qw-P1i"/>
+                <outlet property="releaseDateLabel" destination="F95-jF-jVi" id="FF4-jO-JVg"/>
+            </connections>
+            <point key="canvasLocation" x="-1" y="103"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="android3.png" width="146" height="146"/>
+    </resources>
+</document>

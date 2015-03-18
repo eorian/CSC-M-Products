@@ -10,6 +10,7 @@
 #import "ItemCollectionViewCell.h"
 #import "MainTableViewCell.h"
 #import "GlobalData.h"
+#import "ListItemTableViewController.h"
 @interface ItemCollectionView()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray* collectionArray;
@@ -31,6 +32,13 @@
 }
 #pragma mark    set CollectionView Data
 - (IBAction)seeAllButton:(id)sender {
+    //push seeall tableview controller
+    
+    //prepareData
+    ListItemTableViewController* controller = [ListItemTableViewController new];
+    controller.data = self.collectionArray;
+    [[GlobalData sharedManager].navigationController pushViewController:controller animated:YES];
+    
 }
 
 - (void)setCollectionData:(NSArray *)collectionArray{
@@ -66,6 +74,7 @@
 - (void)setCollectionViewContenOffset:(CGPoint)point;
 {
     [self.collectionView setContentOffset:point animated:NO];
+
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
