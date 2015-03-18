@@ -9,6 +9,7 @@
 #import "ItemCollectionView.h"
 #import "ItemCollectionViewCell.h"
 #import "MainTableViewCell.h"
+#import "GlobalData.h"
 @interface ItemCollectionView()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray* collectionArray;
@@ -24,7 +25,9 @@
     collectionFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     collectionFlowLayout.itemSize = CGSizeMake(90, 150);
     [self.collectionView setCollectionViewLayout:collectionFlowLayout];
+    [self.collectionView setPagingEnabled:YES];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ItemCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"ItemCollectionViewCell"];
+    
 }
 #pragma mark    set CollectionView Data
 - (IBAction)seeAllButton:(id)sender {
@@ -56,7 +59,6 @@
     cell.categoryNameLabel.text = [itemDic objectForKey:@"Catelogy"];
     cell.releaseDateLabel.text = [itemDic objectForKey:@"releaseDate"];
     cell.itemindex = indexPath.row;
-    //self.collectionView setContentOffset:CGPointMake(0, 0) animated:NO];
     return cell;
                                 
 }
@@ -70,7 +72,11 @@
 {
     NSLog(@"scrollview scroll");
     CGPoint point = scrollView.contentOffset;
-   // NSString* key = [NSString stringWithFormat:@"offset%d",];
-    //[self.offsets setObject:[NSValue valueWithCGPoint:point] forKey:key];
+    if (point.x == 0) {
+        return;
+    }
+    NSString* key = [ NSString stringWithFormat:@"index%d",self.cellIndex];
+    [[GlobalData sharedManager].offsets setObject:[NSNumber numberWithFloat:point.x] forKey:key];
 }
+
 @end

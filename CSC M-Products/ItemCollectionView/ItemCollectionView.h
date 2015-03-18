@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ItemCollectionView : UIView
+@property (nonatomic) int cellIndex;
+//Outlet - Action
 @property (weak, nonatomic) IBOutlet UILabel *rowHeaderTitle;
 - (IBAction)seeAllButton:(id)sender;
-
+//Method
 - (void)setCollectionData:(NSArray*)collectionArray;
-
 - (void)setCollectionViewContenOffset:(CGPoint)point;
 
 

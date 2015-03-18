@@ -20,13 +20,14 @@
     if (self) {
         _itemCollectionView = [[NSBundle mainBundle] loadNibNamed:@"ItemCollectionView" owner:self options:nil][0];
         _itemCollectionView.frame = self.bounds;
+        
         [self.contentView addSubview:_itemCollectionView];
     }
     return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+    //[super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }
@@ -37,5 +38,13 @@
 - (void)setHeaderTitle:(NSString *)title
 {
     self.itemCollectionView.rowHeaderTitle.text = title;
+}
+- (void)setCellIndex:(int)index
+{
+    self.itemCollectionView.cellIndex = index;
+}
+- (void)setCollectionViewContenOffset:(CGPoint)point
+{
+    [self.itemCollectionView setCollectionViewContenOffset:point];
 }
 @end

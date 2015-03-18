@@ -9,7 +9,8 @@
 #import "MainTableViewController.h"
 #import "MainTableViewCell.h"
 #import "JsonHelper.h"
-@interface MainTableViewController ()
+#import "GlobalData.h"
+@interface MainTableViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) NSDictionary* collectionData;
 @property (nonatomic, strong) NSMutableArray* collectionDataKeys;
 @end
@@ -21,6 +22,7 @@
     self.collectionData = [self fakeData];
     self.collectionDataKeys = [NSMutableArray arrayWithArray:[[self fakeData]allKeys]];
     [self.tableView registerClass:[MainTableViewCell class] forCellReuseIdentifier:@"MainTableViewCell"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +57,16 @@
     cellData = [self.collectionData objectForKey:[self.collectionDataKeys objectAtIndex:indexPath.row]];
     [cell setCollectionData:cellData];
     [cell setHeaderTitle:[self.collectionDataKeys objectAtIndex:indexPath.row]];
+    [cell setCellIndex:(int)indexPath.row];
+        NSString* key = [ NSString stringWithFormat:@"index%d",(int)indexPath.row];
     
+        if ([[GlobalData sharedManager].offsets objectForKey:key])
+        {
+            
+            CGPoint offsetPoint = CGPointMake([[[GlobalData sharedManager].offsets objectForKey:key] doubleValue], 0);
+            [cell  setCollectionViewContenOffset:offsetPoint];
+        }
+
     return cell;
     
 }

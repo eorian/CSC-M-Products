@@ -11,5 +11,7 @@
 @interface MainTableViewCell : UITableViewCell
 - (void)setCollectionData:(NSArray*)collectionArray;
 - (void)setHeaderTitle:(NSString*)title;
-@property (nonatomic,strong) NSMutableDictionary* collectionViewOffset;
+- (void)setCellIndex:(int)index;
+- (void)setCollectionViewContenOffset:(CGPoint)point;
+
 @end
