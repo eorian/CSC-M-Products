@@ -14,7 +14,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yellow Bee is the most cute bee in the world" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gi8-0y-Omr">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hTJ-f5-VMe">
+                        <rect key="frame" x="8" y="8" width="74" height="74"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="74" id="6YM-Tu-LgV"/>
+                            <constraint firstAttribute="height" constant="74" id="v8e-J6-cYA"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gi8-0y-Omr">
                         <rect key="frame" x="90" y="8" width="178" height="38"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="178" id="6Ri-18-c3N"/>
@@ -24,8 +31,8 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="01/01/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F95-jF-jVi">
-                        <rect key="frame" x="90" y="66" width="178" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F95-jF-jVi">
+                        <rect key="frame" x="90" y="65" width="178" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
@@ -40,19 +47,12 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Android" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQj-ND-VcN">
-                        <rect key="frame" x="90" y="52" width="178" height="11"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQj-ND-VcN">
+                        <rect key="frame" x="90" y="53" width="178" height="11"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="android3.png" translatesAutoresizingMaskIntoConstraints="NO" id="hTJ-f5-VMe">
-                        <rect key="frame" x="8" y="8" width="74" height="74"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="74" id="6YM-Tu-LgV"/>
-                            <constraint firstAttribute="height" constant="74" id="v8e-J6-cYA"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="MMv-Sa-ZhZ" firstAttribute="leading" secondItem="tQj-ND-VcN" secondAttribute="trailing" constant="23" id="0J6-w9-L3G"/>
@@ -75,14 +75,11 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="appNameLabel" destination="Gi8-0y-Omr" id="Q60-56-xPi"/>
-                <outlet property="category" destination="tQj-ND-VcN" id="341-NT-5Kd"/>
-                <outlet property="iconImageView" destination="hTJ-f5-VMe" id="PLJ-qw-P1i"/>
+                <outlet property="categoryLabel" destination="tQj-ND-VcN" id="gzq-Z9-h8m"/>
+                <outlet property="iconImageView" destination="hTJ-f5-VMe" id="8Ol-GF-gf1"/>
                 <outlet property="releaseDateLabel" destination="F95-jF-jVi" id="FF4-jO-JVg"/>
             </connections>
             <point key="canvasLocation" x="-1" y="103"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="android3.png" width="146" height="146"/>
-    </resources>
 </document>

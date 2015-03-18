@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MainTableViewController : UITableViewController
+@property (nonatomic, strong) NSMutableArray* collectionDataKeys;
 
 @end

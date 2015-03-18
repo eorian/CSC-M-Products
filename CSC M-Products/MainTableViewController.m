@@ -12,7 +12,6 @@
 #import "GlobalData.h"
 @interface MainTableViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) NSDictionary* collectionData;
-@property (nonatomic, strong) NSMutableArray* collectionDataKeys;
 @end
 
 @implementation MainTableViewController

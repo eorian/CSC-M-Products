@@ -46,8 +46,12 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary* cellData = [self.data objectAtIndex:indexPath.row];
     ListItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLEVIEWCELL_REUSE_ID ];
-    
+    cell.iconImageView.image = [UIImage imageNamed:[cellData objectForKey:@"iconImage"]];
+    cell.appNameLabel.text = [cellData objectForKey:@"appName"];
+    cell.categoryLabel.text = [cellData objectForKey:@"Catelogy"];
+    cell.releaseDateLabel.text = [cellData objectForKey:@"releaseDate"];
     // Configure the cell...
     
     return cell;

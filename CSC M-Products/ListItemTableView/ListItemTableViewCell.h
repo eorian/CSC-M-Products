@@ -11,7 +11,7 @@
 @interface ListItemTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *appNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *category;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *releaseDateLabel;
 
 @end

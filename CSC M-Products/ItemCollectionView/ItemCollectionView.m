@@ -11,6 +11,7 @@
 #import "MainTableViewCell.h"
 #import "GlobalData.h"
 #import "ListItemTableViewController.h"
+#import "MainTableViewController.h"
 @interface ItemCollectionView()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray* collectionArray;
@@ -38,7 +39,8 @@
     ListItemTableViewController* controller = [ListItemTableViewController new];
     controller.data = self.collectionArray;
     [[GlobalData sharedManager].navigationController pushViewController:controller animated:YES];
-    
+    ListItemTableViewController* listItemViewController = [[[GlobalData sharedManager].navigationController viewControllers] lastObject];
+    listItemViewController.title = [((MainTableViewController*)[[[GlobalData sharedManager].navigationController viewControllers] firstObject]).collectionDataKeys objectAtIndex:self.cellIndex];
 }
 
 - (void)setCollectionData:(NSArray *)collectionArray{
