@@ -23,6 +23,14 @@
     self.title = @"Featured";
     [GlobalData sharedManager].navigationController = self.navigationController;
     [self.tableView registerClass:[MainTableViewCell class] forCellReuseIdentifier:@"MainTableViewCell"];
+    UIView* headerSectionView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width,44)];
+    headerSectionView.backgroundColor   = [UIColor whiteColor];
+    UIView* contentView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width,44)];
+    contentView.backgroundColor = [UIColor greenColor];
+    [headerSectionView  addSubview:contentView];
+    self.tableView.tableHeaderView = headerSectionView;
+    self.view.backgroundColor = [UIColor whiteColor];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,6 +60,7 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     MainTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"MainTableViewCell"];
     NSMutableArray* cellData = [NSMutableArray new];
     cellData = [self.collectionData objectForKey:[self.collectionDataKeys objectAtIndex:indexPath.row]];
@@ -62,7 +71,7 @@
     
         if ([[GlobalData sharedManager].offsets objectForKey:key])
         {
-            
+         
             CGPoint offsetPoint = CGPointMake([[[GlobalData sharedManager].offsets objectForKey:key] doubleValue], 0);
             [cell  setCollectionViewContenOffset:offsetPoint];
         }
@@ -74,8 +83,14 @@
 {
     return 195;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
-
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat offsetY = scrollView.contentOffset.y;
+    UIView *headerContentView = self.tableView.tableHeaderView.subviews[0];
+    headerContentView.transform = CGAffineTransformMakeTranslation(0, MIN(offsetY, 0));
+}
 @end

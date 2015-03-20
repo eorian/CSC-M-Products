@@ -20,7 +20,6 @@
     if (self) {
         _itemCollectionView = [[NSBundle mainBundle] loadNibNamed:@"ItemCollectionView" owner:self options:nil][0];
         _itemCollectionView.frame = self.bounds;
-        
         [self.contentView addSubview:_itemCollectionView];
     }
     return self;

@@ -25,7 +25,8 @@
     self.collectionView.backgroundColor= [UIColor whiteColor];
     UICollectionViewFlowLayout * collectionFlowLayout = [UICollectionViewFlowLayout new];
     collectionFlowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    collectionFlowLayout.itemSize = CGSizeMake(90, 150);
+    collectionFlowLayout.itemSize = CGSizeMake(80, 160);
+    
     [self.collectionView setCollectionViewLayout:collectionFlowLayout];
     [self.collectionView setPagingEnabled:YES];
     [self.collectionView registerNib:[UINib nibWithNibName:@"ItemCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"ItemCollectionViewCell"];
@@ -68,6 +69,7 @@
     cell.appNameLabel.text = [itemDic objectForKey:@"appName"];
     cell.categoryNameLabel.text = [itemDic objectForKey:@"Catelogy"];
     cell.releaseDateLabel.text = [itemDic objectForKey:@"releaseDate"];
+    
     cell.itemindex = indexPath.row;
     return cell;
                                 
@@ -81,7 +83,6 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"scrollview scroll");
     CGPoint point = scrollView.contentOffset;
     if (point.x == 0) {
         return;

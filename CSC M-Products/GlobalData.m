@@ -7,7 +7,7 @@
 //
 
 #import "GlobalData.h"
-
+#import "JsonHelper.h"
 @implementation GlobalData
 @synthesize offsets;
 
@@ -22,8 +22,18 @@
 
 - (id)init {
     if (self = [super init]) {
-        offsets = [[NSMutableDictionary alloc] init];
+        
+        offsets = [NSMutableDictionary new];
     }
     return self;
 }
+- (NSDictionary*)fakeData
+{
+    JsonHelper* helper = [JsonHelper new];
+    NSString*jsonString = [helper JSONwithDictionary:[helper data]];
+    NSDictionary* data = [helper dictionaryWithJSONString:jsonString];
+    return data;
+    
+}
+
 @end

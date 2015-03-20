@@ -77,12 +77,51 @@
     [androidItem5 setObject:@"Android" forKey:@"Catelogy"];
     [androidItem5 setObject:@"1/1/2015" forKey:@"releaseDate"];
     [androidItem5 setObject:@"link" forKey:@"extensionLink"];
-
+    NSMutableDictionary* androidItem6 = [NSMutableDictionary new];
+    [androidItem6 setObject:@"android1.png" forKey:@"iconImage"];
+    [androidItem6 setObject:@"AppAndroid1" forKey:@"appName"];
+    [androidItem6 setObject:@"Android" forKey:@"Catelogy"];
+    [androidItem6 setObject:@"1/1/2015" forKey:@"releaseDate"];
+    [androidItem6 setObject:@"link" forKey:@"extensionLink"];
+    
+    NSMutableDictionary* androidItem7 = [NSMutableDictionary new];
+    [androidItem7 setObject:@"android2.png" forKey:@"iconImage"];
+    [androidItem7 setObject:@"AppAndroid2" forKey:@"appName"];
+    [androidItem7 setObject:@"Android" forKey:@"Catelogy"];
+    [androidItem7 setObject:@"1/1/2015" forKey:@"releaseDate"];
+    [androidItem7 setObject:@"link" forKey:@"extensionLink"];
+    
+    NSMutableDictionary* androidItem8 = [NSMutableDictionary new];
+    [androidItem8 setObject:@"android3.png" forKey:@"iconImage"];
+    [androidItem8 setObject:@"AppAndroid3" forKey:@"appName"];
+    [androidItem8 setObject:@"Android" forKey:@"Catelogy"];
+    [androidItem8 setObject:@"1/1/2015" forKey:@"releaseDate"];
+    [androidItem8 setObject:@"link" forKey:@"extensionLink"];
+    
+    NSMutableDictionary* androidItem9 = [NSMutableDictionary new];
+    [androidItem9 setObject:@"android4.png" forKey:@"iconImage"];
+    [androidItem9 setObject:@"AppAndroid4" forKey:@"appName"];
+    [androidItem9 setObject:@"Android" forKey:@"Catelogy"];
+    [androidItem9 setObject:@"1/1/2015" forKey:@"releaseDate"];
+    [androidItem9 setObject:@"link" forKey:@"extensionLink"];
+    
+    NSMutableDictionary* androidItem10 = [NSMutableDictionary new];
+    [androidItem10 setObject:@"android5.png" forKey:@"iconImage"];
+    [androidItem10 setObject:@"AppAndroid5" forKey:@"appName"];
+    [androidItem10 setObject:@"Android" forKey:@"Catelogy"];
+    [androidItem10 setObject:@"1/1/2015" forKey:@"releaseDate"];
+    [androidItem10 setObject:@"link" forKey:@"extensionLink"];
+    
     [android addObject:androidItem1];
     [android addObject:androidItem2];
     [android addObject:androidItem3];
     [android addObject:androidItem4];
     [android addObject:androidItem5];
+    [android addObject:androidItem6];
+    [android addObject:androidItem7];
+    [android addObject:androidItem8];
+    [android addObject:androidItem9];
+    [android addObject:androidItem10];
     [categories setObject:android forKey:@"Android"];
     [categories setObject:android forKey:@"Android1"];
     [categories setObject:android forKey:@"Android2"];
