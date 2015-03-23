@@ -30,7 +30,7 @@
 - (NSDictionary*)fakeData
 {
     JsonHelper* helper = [JsonHelper new];
-    NSString*jsonString = [helper JSONwithDictionary:[helper data]];
+    NSString*jsonString = [helper JSONwithDictionary:[helper mainCollectionData]];
     NSDictionary* data = [helper dictionaryWithJSONString:jsonString];
     return data;
     

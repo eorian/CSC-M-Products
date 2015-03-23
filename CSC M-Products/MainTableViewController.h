@@ -10,5 +10,5 @@
 
 @interface MainTableViewController : UITableViewController
 @property (nonatomic, strong) NSMutableArray* collectionDataKeys;
-
+@property (nonatomic, strong) NSMutableArray* headerImage;
 @end

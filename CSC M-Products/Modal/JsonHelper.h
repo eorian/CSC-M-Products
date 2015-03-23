@@ -11,7 +11,9 @@
 @interface JsonHelper : NSObject
 
 - (NSString*)JSONwithDictionary:(NSDictionary*)dictionary;
-- (NSDictionary*)data;
+
 - (NSDictionary*)dictionaryWithJSONString:(NSString*)JSONString;
+- (NSDictionary*)mainCollectionData;
+- (NSArray*)headerData;
 
 @end

@@ -37,8 +37,16 @@
     return json;
 }
 
-
-- (NSDictionary*)data
+- (NSArray*)headerData
+{
+    NSArray* data = @[
+                      @"header1.png",
+                      @"header2.png",
+                      @"header3.png"
+                      ];
+    return data;
+}
+- (NSDictionary*)mainCollectionData
 {
     NSMutableDictionary* categories = [NSMutableDictionary new];
     //Android

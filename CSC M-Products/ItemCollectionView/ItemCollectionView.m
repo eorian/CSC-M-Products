@@ -81,7 +81,7 @@
 
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     CGPoint point = scrollView.contentOffset;
     if (point.x == 0) {
@@ -90,5 +90,4 @@
     NSString* key = [ NSString stringWithFormat:@"index%d",self.cellIndex];
     [[GlobalData sharedManager].offsets setObject:[NSNumber numberWithFloat:point.x] forKey:key];
 }
-
 @end
