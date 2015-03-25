@@ -74,28 +74,30 @@
                 NSArray* images = [cellInfos objectForKey:@"images"];
                 for (int i = 0; i < 5; i++)
                 {
-                    UIImageView* screenShot = [[UIImageView alloc]initWithFrame:CGRectMake((10*i +160*i) == 0? 10 : (10*i +160*i), 10, 160, 284)];
-                    screenShot.image = [UIImage imageNamed:[images  objectAtIndex:i]];
+                    UIButton* screenShot = [[UIButton alloc]initWithFrame:CGRectMake(10*i +160*i +10, 10, 160, 284)];
+                    screenShot.tag = 1100+i;
+                    [screenShot setBackgroundImage:[UIImage imageNamed:[images  objectAtIndex:i]] forState:UIControlStateNormal];;
                     screenShot.contentMode = UIViewContentModeScaleAspectFit;
+                    [screenShot addTarget:self action:@selector(ImageSelected:) forControlEvents:UIControlEventTouchUpInside];
                     cell.scrollView.contentSize = CGSizeMake(160*5+60, 284);
                     cell.scrollView.alwaysBounceVertical = NO;
-                    //cell.scrollView.contentInset = UIEdgeInsetsMake(0, 10, 0, 10);
-
+                    //cell.scrollView.contentInset = UIEdgeInsetsMake(0, 10, 0, 10)
                     [cell.scrollView addSubview:screenShot];
                 }
-                                return cell;
-                
+                    return cell;
             }
                 break;
-                
             default:
                 break;
         }
-        
-        
     }
-
     return nil;
+}
+- (void)ImageSelected:(NSArray*)imageArray selector:(id)sender
+{
+    //getImage Array and create new scrollViewController to show it
+    NSLog([NSString stringWithFormat:@"Tag: %ld",(long)((UIButton*)sender).tag ]);
+
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
