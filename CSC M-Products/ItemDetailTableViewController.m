@@ -11,6 +11,7 @@
 #import "GlobalData.h"
 #import "Constant.h"
 #import "ImageViewTableViewCell.h"
+#import "ImagePageViewController.h"
 #define TABLEVIEW_CELL_REUSE_ID @"ItemDetailTableViewCell"
 #define TABLEVIEW_CELL_IMAGEVIEW_REUSE_ID @"ImageViewTableViewCell"
 @interface ItemDetailTableViewController ()
@@ -72,7 +73,7 @@
             {
                 ImageViewTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:TABLEVIEW_CELL_IMAGEVIEW_REUSE_ID];
                 NSArray* images = [cellInfos objectForKey:@"images"];
-                for (int i = 0; i < 5; i++)
+                for (int i = 0 ; i < images.count; i++)
                 {
                     UIButton* screenShot = [[UIButton alloc]initWithFrame:CGRectMake(10*i +160*i +10, 10, 160, 284)];
                     screenShot.tag = 1100+i;
@@ -93,11 +94,16 @@
     }
     return nil;
 }
-- (void)ImageSelected:(NSArray*)imageArray selector:(id)sender
+- (void)ImageSelected:(id)sender
 {
+    NSDictionary* cellInfos = [[GlobalData sharedManager].contentCells objectAtIndex:0];
+    NSArray* images = [cellInfos objectForKey:@"images"];
     //getImage Array and create new scrollViewController to show it
-    NSLog([NSString stringWithFormat:@"Tag: %ld",(long)((UIButton*)sender).tag ]);
-
+    
+    ImagePageViewController* controller = [[ImagePageViewController alloc]init];
+    controller.data = images;
+    controller.selectedIndex = ((UIButton*)sender).tag - 1100;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
