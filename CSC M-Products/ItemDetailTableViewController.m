@@ -50,7 +50,7 @@
         return 1;
     }
     else
-        return [GlobalData sharedManager].contentCells.count;
+        return [GlobalData sharedManager].description.count;
 }
 
 
@@ -66,7 +66,7 @@
     else if (indexPath.section == 1)
     {
         
-        NSDictionary* cellInfos = [[GlobalData sharedManager].contentCells objectAtIndex:0];
+        NSDictionary* cellInfos = [[GlobalData sharedManager].description objectForKey:@"descriptionImages"];
         int tableViewStyle = [[cellInfos objectForKey:@"tableViewCellStyle"]intValue];
         switch (tableViewStyle) {
             case TABLEVIEWCELL_STYLE_IMAGEVIEW:
@@ -96,7 +96,7 @@
 }
 - (void)ImageSelected:(id)sender
 {
-    NSDictionary* cellInfos = [[GlobalData sharedManager].contentCells objectAtIndex:0];
+    NSDictionary* cellInfos = [[GlobalData sharedManager].description objectForKey:@"descriptionImages"];
     NSArray* images = [cellInfos objectForKey:@"images"];
     //getImage Array and create new scrollViewController to show it
     
@@ -119,7 +119,7 @@
 {
     if (section == 1) {
         UIView* headerView = [[UIView alloc]initWithFrame:CGRectMake(0.0f, 0.0f, self.view.bounds.size.width, 44.0f)];
-        NSArray* segmentedItems = @[@"Details",@"Review",@"Related"];
+        NSArray* segmentedItems = @[@"Descriptions",@"Technology",@"Team size"];
         UISegmentedControl* segmented = [[UISegmentedControl alloc]initWithItems:segmentedItems];
         segmented.frame = CGRectMake(0, 0, self.view.bounds.size.width - 30 , 30);
         segmented.center = headerView.center;

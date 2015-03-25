@@ -10,7 +10,7 @@
 #import "JsonHelper.h"
 #import "Constant.h"
 @implementation GlobalData
-@synthesize offsets, contentCells;
+@synthesize offsets, description;
 
 + (GlobalData*)sharedManager {
     static GlobalData *sharedMyManager = nil;
@@ -41,11 +41,19 @@
 }
 - (void)prepareData
 {
-    NSMutableDictionary* exampleCell = [[NSMutableDictionary alloc]init];
-    [exampleCell setObject:[NSNumber numberWithInt:TABLEVIEWCELL_STYLE_IMAGEVIEW ] forKey:@"tableViewCellStyle"];
+    //fakedata for description section
+    //imageViewCell
+    NSMutableDictionary* imageCell = [[NSMutableDictionary alloc]init];
+    [imageCell setObject:[NSNumber numberWithInt:TABLEVIEWCELL_STYLE_IMAGEVIEW ] forKey:@"tableViewCellStyle"];
     NSArray* imageName = @[@"IMG_1021.PNG",@"IMG_1022.PNG", @"IMG_1023.PNG",@"IMG_1024.PNG",@"IMG_1025.PNG"];
-    [exampleCell setObject:imageName forKey:@"images"];
-    self.contentCells = [NSMutableArray new];
-    [self.contentCells addObject:exampleCell];
+    [imageCell setObject:imageName forKey:@"images"];
+    self.description = [NSMutableDictionary new];
+    [self.description setObject:imageCell forKey:@"descriptionImages"];
+    //TextCell
+    NSMutableDictionary* textCellClientProfile = [NSMutableDictionary new];
+    [textCellClientProfile setObject:[NSNumber numberWithInt:TABLEVIEWCELL_STYLE_PLAINTEXT ] forKey:@"tableViewCellStyle"];
+    [textCellClientProfile setObject:@"Client Profile" forKey:@"title"];
+    [textCellClientProfile setObject:@"PT Tokio Marine Life Insurence Indonesia (TMLI) is one of the subsidiaries of Tokio Marine Group,  the oldest insurance group in Japan established in 1879." forKey:@"text"];
+    [self.description setObject:textCellClientProfile forKey:@"descriptionText"];
 }
 @end
