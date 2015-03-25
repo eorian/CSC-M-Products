@@ -9,13 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @interface GlobalData : NSObject
+
 {
     NSMutableDictionary* offsets;
-
+    NSMutableArray* contentCells;
 }
 
 @property (nonatomic, strong) NSMutableDictionary* offsets;
 @property (nonatomic,strong) UINavigationController* navigationController;
+@property (nonatomic,strong) NSMutableArray* contentCells;
+
 + (GlobalData*)sharedManager;
 
 @end

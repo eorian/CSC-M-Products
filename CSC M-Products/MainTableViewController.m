@@ -113,7 +113,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+
 }
+
+#pragma mark UIScrollView Delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
 

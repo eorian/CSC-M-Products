@@ -8,8 +8,9 @@
 
 #import "GlobalData.h"
 #import "JsonHelper.h"
+#import "Constant.h"
 @implementation GlobalData
-@synthesize offsets;
+@synthesize offsets, contentCells;
 
 + (GlobalData*)sharedManager {
     static GlobalData *sharedMyManager = nil;
@@ -24,6 +25,7 @@
     if (self = [super init]) {
         
         offsets = [NSMutableDictionary new];
+        [self prepareData];
     }
     return self;
 }
@@ -33,7 +35,17 @@
     NSString*jsonString = [helper JSONwithDictionary:[helper mainCollectionData]];
     NSDictionary* data = [helper dictionaryWithJSONString:jsonString];
     return data;
+    //////////fakecelldata
+    
     
 }
-
+- (void)prepareData
+{
+    NSMutableDictionary* exampleCell = [[NSMutableDictionary alloc]init];
+    [exampleCell setObject:[NSNumber numberWithInt:TABLEVIEWCELL_STYLE_IMAGEVIEW ] forKey:@"tableViewCellStyle"];
+    NSArray* imageName = @[@"IMG_1021.PNG",@"IMG_1022.PNG", @"IMG_1023.PNG",@"IMG_1024.PNG",@"IMG_1025.PNG"];
+    [exampleCell setObject:imageName forKey:@"images"];
+    self.contentCells = [NSMutableArray new];
+    [self.contentCells addObject:exampleCell];
+}
 @end

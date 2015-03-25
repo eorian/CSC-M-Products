@@ -12,6 +12,7 @@
 #import "GlobalData.h"
 #import "ListItemTableViewController.h"
 #import "MainTableViewController.h"
+#import "ItemDetailTableViewController.h"
 @interface ItemCollectionView()<UICollectionViewDataSource,UICollectionViewDelegate,UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) NSArray* collectionArray;
@@ -50,9 +51,6 @@
     [self.collectionView reloadData];
 }
 
-
-
-
 #pragma mark UICollectionView Data source
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -73,6 +71,14 @@
     cell.itemindex = indexPath.row;
     return cell;
                                 
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary* itemDic = [self.collectionArray objectAtIndex:indexPath.row];
+    ItemDetailTableViewController* controller = [ItemDetailTableViewController new];
+    controller.firstCellData = itemDic;
+    [[GlobalData sharedManager].navigationController pushViewController:controller animated:YES];
+    
 }
 #pragma mark UIScrollview delegate
 - (void)setCollectionViewContenOffset:(CGPoint)point;
