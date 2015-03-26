@@ -12,12 +12,12 @@
 
 {
     NSMutableDictionary* offsets;
-    NSMutableArray* description;
+    NSMutableArray* description,* members;
 }
 
 @property (nonatomic, strong) NSMutableDictionary* offsets;
 @property (nonatomic,strong) UINavigationController* navigationController;
-@property (nonatomic,strong) NSMutableArray* description;
+@property (nonatomic,strong) NSMutableArray* description, *members;
 
 /*dictionary info for descriotionSection
  ---------------------array item
