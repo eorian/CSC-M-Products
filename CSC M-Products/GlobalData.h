@@ -12,18 +12,18 @@
 
 {
     NSMutableDictionary* offsets;
-    NSMutableDictionary* description;
+    NSMutableArray* description;
 }
 
 @property (nonatomic, strong) NSMutableDictionary* offsets;
 @property (nonatomic,strong) UINavigationController* navigationController;
-@property (nonatomic,strong) NSMutableDictionary* description;
+@property (nonatomic,strong) NSMutableArray* description;
 
 /*dictionary info for descriotionSection
- ---------------------object for key descriptionImages
+ ---------------------array item
  "tableViewCellStyle": "Imageview" ->enum in constant.h
  "Images": "ImageArray"
- ---------------------object for key descriptionText
+ ---------------------arrayitem
  "tableViewCellStyle": "plainText" ->Enum
  "title": "String"
  "text" : "String"

@@ -12,18 +12,24 @@
 #import "Constant.h"
 #import "ImageViewTableViewCell.h"
 #import "ImagePageViewController.h"
+#import "PlainTableViewCell.h"
 #define TABLEVIEW_CELL_REUSE_ID @"ItemDetailTableViewCell"
 #define TABLEVIEW_CELL_IMAGEVIEW_REUSE_ID @"ImageViewTableViewCell"
+#define TABLEVIEW_CELL_PLAINTEXT_REUSE_ID @"PlainTableViewCell"
 @interface ItemDetailTableViewController ()
-
+{
+    NSMutableDictionary* textCellheight;
+}
 @end
 
 @implementation ItemDetailTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    textCellheight = [NSMutableDictionary new];
     [self.tableView registerNib:[UINib nibWithNibName:TABLEVIEW_CELL_REUSE_ID bundle:nil] forCellReuseIdentifier:TABLEVIEW_CELL_REUSE_ID];
     [self.tableView registerNib:[UINib nibWithNibName:TABLEVIEW_CELL_IMAGEVIEW_REUSE_ID bundle:nil] forCellReuseIdentifier:TABLEVIEW_CELL_IMAGEVIEW_REUSE_ID];
+    [self.tableView registerNib:[UINib nibWithNibName:TABLEVIEW_CELL_PLAINTEXT_REUSE_ID bundle:nil] forCellReuseIdentifier:TABLEVIEW_CELL_PLAINTEXT_REUSE_ID];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -66,18 +72,20 @@
     else if (indexPath.section == 1)
     {
         
-        NSDictionary* cellInfos = [[GlobalData sharedManager].description objectForKey:@"descriptionImages"];
+        NSDictionary* cellInfos = [[GlobalData sharedManager].description objectAtIndex:indexPath.row];
         int tableViewStyle = [[cellInfos objectForKey:@"tableViewCellStyle"]intValue];
         switch (tableViewStyle) {
             case TABLEVIEWCELL_STYLE_IMAGEVIEW:
             {
                 ImageViewTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:TABLEVIEW_CELL_IMAGEVIEW_REUSE_ID];
+                
                 NSArray* images = [cellInfos objectForKey:@"images"];
                 for (int i = 0 ; i < images.count; i++)
                 {
                     UIButton* screenShot = [[UIButton alloc]initWithFrame:CGRectMake(10*i +160*i +10, 10, 160, 284)];
                     screenShot.tag = 1100+i;
-                    [screenShot setBackgroundImage:[UIImage imageNamed:[images  objectAtIndex:i]] forState:UIControlStateNormal];;
+                    [screenShot setBackgroundImage:[UIImage imageNamed:[images  objectAtIndex:i]] forState:UIControlStateNormal];
+                    screenShot.titleLabel.tag = indexPath.row;
                     screenShot.contentMode = UIViewContentModeScaleAspectFit;
                     [screenShot addTarget:self action:@selector(ImageSelected:) forControlEvents:UIControlEventTouchUpInside];
                     cell.scrollView.contentSize = CGSizeMake(160*5+60, 284);
@@ -88,6 +96,24 @@
                     return cell;
             }
                 break;
+            case TABLEVIEWCELL_STYLE_PLAINTEXT:
+            {
+                PlainTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:TABLEVIEW_CELL_PLAINTEXT_REUSE_ID];
+                cell.titlelabel.text = [cellInfos objectForKey:@"title"];
+                cell.containlabel.text = [cellInfos objectForKey:@"text"];
+                CGRect labelFrame = cell.containlabel.frame;
+                labelFrame.size.width = 310;
+                NSLog([NSString stringWithFormat:@"%f",cell.containlabel.frame.size.height]);
+                cell.containlabel.numberOfLines=0;
+                cell.containlabel.frame = labelFrame;
+                //cell.containlabel.backgroundColor = [UIColor grayColor];
+                [cell.containlabel sizeToFit];
+                NSLog([NSString stringWithFormat:@"%f",cell.containlabel.frame.size.height]);
+                
+                [textCellheight setObject:[NSNumber numberWithFloat:(cell.containlabel.frame.size.height + 40)] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
+                return cell;
+            }
+                break;
             default:
                 break;
         }
@@ -96,7 +122,8 @@
 }
 - (void)ImageSelected:(id)sender
 {
-    NSDictionary* cellInfos = [[GlobalData sharedManager].description objectForKey:@"descriptionImages"];
+    NSInteger index = ((UIButton*)sender).titleLabel.tag;
+    NSDictionary* cellInfos = [[GlobalData sharedManager].description objectAtIndex:index];
     NSArray* images = [cellInfos objectForKey:@"images"];
     //getImage Array and create new scrollViewController to show it
     
@@ -111,7 +138,26 @@
     {
         return 90.0f;
     }else if(indexPath.section == 1)
-        return 304.0f;
+    {
+        NSDictionary* cellInfos = [[GlobalData sharedManager].description objectAtIndex:indexPath.row];
+        int tableViewStyle = [[cellInfos objectForKey:@"tableViewCellStyle"]intValue];
+        switch (tableViewStyle)
+        {
+            case TABLEVIEWCELL_STYLE_IMAGEVIEW:
+                {
+                    return 304;
+                }
+            break;
+            case TABLEVIEWCELL_STYLE_PLAINTEXT:
+                {
+                    return [[textCellheight objectForKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]] floatValue];
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    
     return 0;
 
 }

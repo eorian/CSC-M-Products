@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface PlainTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *titlelabel;
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *containlabel;
+
 
 @end
