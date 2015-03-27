@@ -78,10 +78,7 @@
 - (NSDictionary*)fakeData
 {
     JsonHelper* helper = [JsonHelper new];
-    NSString*jsonString = [helper JSONwithDictionary:[helper mainCollectionData]];
-    NSDictionary* data = [helper dictionaryWithJSONString:jsonString];
-    return data;
-    
+    return helper.appData;
 }
 #pragma mark table View Delegate Datasource
 

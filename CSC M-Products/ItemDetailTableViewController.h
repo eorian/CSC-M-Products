@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ItemDetailTableViewController : UITableViewController
-@property (nonatomic, strong) NSMutableDictionary* firstCellData;
+@property (nonatomic, strong) NSMutableDictionary* data;
 @property (nonatomic,strong) NSArray* contentCells;
 @end

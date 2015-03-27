@@ -36,7 +36,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:TABLEVIEW_CELL_IMAGEVIEW_REUSE_ID bundle:nil] forCellReuseIdentifier:TABLEVIEW_CELL_IMAGEVIEW_REUSE_ID];
     [self.tableView registerNib:[UINib nibWithNibName:TABLEVIEW_CELL_PLAINTEXT_REUSE_ID bundle:nil] forCellReuseIdentifier:TABLEVIEW_CELL_PLAINTEXT_REUSE_ID];
     [self.tableView registerNib:[UINib nibWithNibName:TABLEVIEW_CELL_TEMAM_MEMBER_REUSE_ID bundle:nil] forCellReuseIdentifier:TABLEVIEW_CELL_TEMAM_MEMBER_REUSE_ID];
-    self.title =[self.firstCellData objectForKey:@"appName"];
+    self.title =[self.data objectForKey:@"appName"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,13 +61,13 @@
         if (section == 1) {
             switch (segmentSelected) {
                 case 0:
-                    return [GlobalData sharedManager].description.count;
+                    return ((NSArray*)[self.data objectForKey:@"description"]).count;
                     break;
                 case 1:
                     return 0;
                     break;
                 case 2:
-                    return [GlobalData sharedManager].members.count;
+                    return ((NSArray*)[self.data objectForKey:@"teamsize"]).count;
                     break;
                     
                 default:
@@ -81,10 +81,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         ItemDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TABLEVIEW_CELL_REUSE_ID forIndexPath:indexPath];
-    cell.iconImageView.image = [UIImage imageNamed:[self.firstCellData objectForKey:@"iconImage"]];
-    cell.appNameLabel.text = [self.firstCellData objectForKey:@"appName"];
-    cell.partnerLabel.text = [self.firstCellData objectForKey:@"partner"];
-    cell.releaseDateLabel.text = [self.firstCellData objectForKey:@"releaseDate"];
+    cell.iconImageView.image = [UIImage imageNamed:[self.data objectForKey:@"iconImage"]];
+    cell.appNameLabel.text = [self.data objectForKey:@"appName"];
+    cell.partnerLabel.text = [self.data objectForKey:@"partner"];
+    cell.releaseDateLabel.text = [self.data objectForKey:@"releaseDate"];
     return cell;
     }
     else if (indexPath.section == 1)
@@ -92,8 +92,8 @@
         switch (segmentSelected) {
             case 0://App Description
             {
-                NSDictionary* cellInfos = [[GlobalData sharedManager].description objectAtIndex:indexPath.row];
-                int tableViewStyle = [[cellInfos objectForKey:@"tableViewCellStyle"]intValue];
+                NSDictionary* cellInfos = [[self.data objectForKey:@"description"]objectAtIndex:indexPath.row];
+                int tableViewStyle = [[cellInfos objectForKey:@"tableViewStyle"]intValue];
                 switch (tableViewStyle) {
                     case TABLEVIEWCELL_STYLE_IMAGEVIEW:
                     {
@@ -102,17 +102,20 @@
                         NSArray* images = [cellInfos objectForKey:@"images"];
                         for (int i = 0 ; i < images.count; i++)
                         {
-                            UIButton* screenShot = [[UIButton alloc]initWithFrame:CGRectMake(10*i +160*i +10, 10, 160, 284)];
-                            screenShot.tag = 1100+i;
-                            [screenShot setBackgroundImage:[UIImage imageNamed:[images  objectAtIndex:i]] forState:UIControlStateNormal];
-                            screenShot.titleLabel.tag = indexPath.row;
+                            UIImageView* screenShot = [[UIImageView alloc]initWithFrame:CGRectMake(10*i +160*i +10, 10, 160, 284)];
+                            UIButton* button = [[UIButton alloc]initWithFrame:CGRectMake(10*i +160*i +10, 10, 160, 284)];
+                            button.tag = 1100+i;
                             screenShot.contentMode = UIViewContentModeScaleAspectFit;
-                            [screenShot addTarget:self action:@selector(ImageSelected:) forControlEvents:UIControlEventTouchUpInside];
-                            cell.scrollView.contentSize = CGSizeMake(160*5+60, 284);
-                            cell.scrollView.alwaysBounceVertical = NO;
+                            [screenShot setImage:[UIImage imageNamed:[images  objectAtIndex:i]]];
+                            button.titleLabel.tag = indexPath.row;
+                            [button addTarget:self action:@selector(ImageSelected:) forControlEvents:UIControlEventTouchUpInside];
+                            
                             //cell.scrollView.contentInset = UIEdgeInsetsMake(0, 10, 0, 10)
                             [cell.scrollView addSubview:screenShot];
+                            [cell.scrollView addSubview:button];
                         }
+                        cell.scrollView.contentSize = CGSizeMake(160*images.count+10*(images.count+1), 284);
+                        cell.scrollView.alwaysBounceVertical = NO;
                         return cell;
                     }
                         break;
@@ -127,8 +130,8 @@
                         cell.containlabel.numberOfLines=0;
                         cell.containlabel.frame = labelFrame;
                         //cell.containlabel.backgroundColor = [UIColor grayColor];
-                       // [cell.containlabel sizeToFit];
-                        NSLog([NSString stringWithFormat:@"%f",cell.containlabel.frame.size.height]);
+                       [cell.containlabel sizeToFit];
+                        //NSLog([NSString stringWithFormat:@"%f",cell.containlabel.frame.size.height]);
                         
                         [textCellheight setObject:[NSNumber numberWithFloat:(cell.containlabel.frame.size.height + 40)] forKey:[NSString stringWithFormat:@"%ld",(long)indexPath.row]];
                         
@@ -140,13 +143,13 @@
                 }
             }
                 break;
-            case 1://Technologies size Member
+            case 1://Technologies
             {
             }
                 break;
             case 2://Team size
             {
-                NSDictionary* data = [[GlobalData sharedManager].members objectAtIndex:indexPath.row];
+                NSDictionary* data = [[self.data objectForKey:@"teamsize"]objectAtIndex:indexPath.row];
                 TeamMemberTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:TABLEVIEW_CELL_TEMAM_MEMBER_REUSE_ID];
                 cell.memberImageView.image = [UIImage imageNamed:[data objectForKey:@"memberImage"]];
                 cell.memberNameLabel.text =[data objectForKey:@"memberName"];
@@ -167,7 +170,7 @@
 - (void)ImageSelected:(id)sender
 {
     NSInteger index = ((UIButton*)sender).titleLabel.tag;
-    NSDictionary* cellInfos = [[GlobalData sharedManager].description objectAtIndex:index];
+    NSDictionary* cellInfos = [[self.data objectForKey:@"description"]objectAtIndex:index];
     NSArray* images = [cellInfos objectForKey:@"images"];
     //getImage Array and create new scrollViewController to show it
     
@@ -187,8 +190,8 @@
             switch (segmentSelected) {
                 case 0:
                 {
-                    NSDictionary* cellInfos = [[GlobalData sharedManager].description objectAtIndex:indexPath.row];
-                    int tableViewStyle = [[cellInfos objectForKey:@"tableViewCellStyle"]intValue];
+                    NSDictionary* cellInfos = [[self.data objectForKey:@"description"]objectAtIndex:indexPath.row];
+                    int tableViewStyle = [[cellInfos objectForKey:@"tableViewStyle"]intValue];
                     switch (tableViewStyle)
                     {
                         case TABLEVIEWCELL_STYLE_IMAGEVIEW:
@@ -208,7 +211,7 @@
                 }
                     break;
                 case 1:
-                    return 0;
+                    return 66;
                     break;
                 case 2:
                     return 66;
@@ -250,7 +253,7 @@
     segmentSelected = segmented.selectedSegmentIndex;
     [self.tableView reloadData];
 
-    NSLog(@"segmented touch:%ld", (long)segmented.selectedSegmentIndex);
+   
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -265,7 +268,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 1 && segmentSelected == 2) {
         MemberDetailViewController* controller = [MemberDetailViewController  new];
-        controller.data = [[GlobalData sharedManager].members objectAtIndex:indexPath.row];
+        controller.data = [[self.data objectForKey:@"teamsize"]objectAtIndex:indexPath.row];
         
         [self.navigationController pushViewController:controller animated:YES];
         

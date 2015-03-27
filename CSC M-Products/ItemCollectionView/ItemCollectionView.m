@@ -66,7 +66,7 @@
     cell.iconImageView.image = [UIImage imageNamed:[itemDic objectForKey:@"iconImage"]];
     cell.appNameLabel.text = [itemDic objectForKey:@"appName"];
     cell.categoryNameLabel.text = [itemDic objectForKey:@"Catelogy"];
-    cell.releaseDateLabel.text = [itemDic objectForKey:@"releaseDate"];
+    cell.releaseDateLabel.text = [itemDic objectForKey:@"partner"];
     
     cell.itemindex = indexPath.row;
     return cell;
@@ -76,7 +76,7 @@
 {
     NSDictionary* itemDic = [self.collectionArray objectAtIndex:indexPath.row];
     ItemDetailTableViewController* controller = [ItemDetailTableViewController new];
-    controller.firstCellData = itemDic;
+    controller.data = itemDic;
     [[GlobalData sharedManager].navigationController pushViewController:controller animated:YES];
     
 }

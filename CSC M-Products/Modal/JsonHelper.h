@@ -15,5 +15,5 @@
 - (NSDictionary*)dictionaryWithJSONString:(NSString*)JSONString;
 - (NSDictionary*)mainCollectionData;
 - (NSArray*)headerData;
-
+- (NSDictionary*)appData;
 @end
