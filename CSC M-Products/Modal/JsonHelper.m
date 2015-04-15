@@ -195,11 +195,46 @@
                                                                       ],
                            @"technology":@[],
                            @"teamsize":[self teamMembers]
-                           }
+                           },
                          ];
+NSArray* windows = @[
+                             
+                             @{@"iconImage":@"truven_icon.jpg",
+                               @"appName":@"Data Probe",
+                               @"Catelogy":@"Windows",
+                               @"releseDate":@"",
+                               @"partner":@"Truven Health Analytics",
+                               @"extensionLink":@"",
+                               @"description":@[
+                                       @{
+                                           @"tableViewStyle":[NSNumber numberWithInt:TABLEVIEWCELL_STYLE_IMAGEVIEW],
+                                           @"images":@[@"truven_web1.PNG",@"truven_web2.PNG"]
+                                           },
+                                       @{
+                                           @"tableViewStyle":[NSNumber numberWithInt:TABLEVIEWCELL_STYLE_PLAINTEXT],
+                                           @"title":@"Truven Health Analytics",
+                                           @"text":@" Truven Health Analytics delivers unbiased information, analytic tools, benchmarks, and services to the healthcare industry. Hospitals, government agencies, employers, health plans, clinicians, and pharmaceutical and medical device companies have relied on us for more than 30 years."
+                                           },
+                                       @{
+                                           @"tableViewStyle":[NSNumber numberWithInt:TABLEVIEWCELL_STYLE_PLAINTEXT],
+                                           @"title":@"About Data Probe",
+                                           @"text":@"  DataProbe is a high-performance data management and analysis system that enhances the productivity of healthcare analysts, fraud investigators, researchers, and other professional staff when performing complex analysis and deep-dive, unstructured, iterative, data-intensive investigation."
+                                           },
+                                       @{
+                                           @"tableViewStyle":[NSNumber numberWithInt:TABLEVIEWCELL_STYLE_PLAINTEXT],
+                                           @"title":@"Bussiness Challenges",
+                                           @"text":@" CSC’s User Experience team created the design using our Vis-EDGE process to improve the Usability and Performance of the application."
+                                           }
+                                       
+                                       ],
+                               @"technology":@[],
+                               @"teamsize":[self teamMembers]
+                               }
+                             ];
     [apps setObject:iOS forKey:@"iOS"];
     [apps setObject:android forKey:@"Android"];
     [apps setObject:crossPlatform forKey:@"CrossPlatform"];
+    [apps setObject:windows forKey:@"Windows"];
     return apps;
 }
 
